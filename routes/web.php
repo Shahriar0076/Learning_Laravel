@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Country;
 
 /*
 |--------------------------------------------------------------------------
@@ -200,14 +201,27 @@ use App\Models\User;
 // });
 
 //Accessing the pivot table
-Route::get('/users/pivot',function(){
+// Route::get('/users/pivot',function(){
     
-    $user = User::find(1);
-    foreach ($user->roles as $role){
-        echo $role->pivot->created_at;
-    }
+//     $user = User::find(1);
+//     foreach ($user->roles as $role){
+//         echo $role->pivot->created_at;
+//     }
+
+// });
+
+
+Route::get('/users/country',function(){
+   $country = Country::find(1);  
+   foreach($country->posts as $post){
+       echo $post->title;
+   }  
+   //return $country->posts ;
 
 });
+
+
+
 
 
 
