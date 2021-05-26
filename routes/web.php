@@ -180,14 +180,25 @@ use App\Models\User;
 
 
 //one to many relationship
-Route::get('/posts',function(){
-    $user = User::find(1);
+// Route::get('/posts',function(){
+//     $user = User::find(1);
+//     foreach($user->posts as $post){
+//         echo $post->title.'<br>';
+//     }
+// });
 
-    foreach($user->posts as $post){
-        echo $post->title.'<br>';
-    }
+//many to many relationship
+Route::get('/user/{id}/role',function($id){
+    // $user = User::find($id);
+    // foreach($user->roles as $role){
+    //      echo $role->name.'<br>';
+    // }
+
+    $user = User::find($id)->roles()->orderBy('id','desc')->get();
+    return $user;
 
 });
+
 
 
 
