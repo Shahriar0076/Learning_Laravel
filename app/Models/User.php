@@ -50,7 +50,10 @@ class User extends Authenticatable
     }
 
     public function roles(){
-        return $this->belongstoMany('App\Models\Role');
+        return $this->belongstoMany('App\Models\Role')->withPivot('created_at');
+
+        // to customize tables names and columns follow the format below
+        return $this->belongstoMany('App\Models\Role','user_roles','user_id','role_id');
     }
 
 

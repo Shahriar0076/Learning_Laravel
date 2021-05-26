@@ -188,17 +188,26 @@ use App\Models\User;
 // });
 
 //many to many relationship
-Route::get('/user/{id}/role',function($id){
-    // $user = User::find($id);
-    // foreach($user->roles as $role){
-    //      echo $role->name.'<br>';
-    // }
+// Route::get('/user/{id}/role',function($id){
+//     // $user = User::find($id);
+//     // foreach($user->roles as $role){
+//     //      echo $role->name.'<br>';
+//     // }
 
-    $user = User::find($id)->roles()->orderBy('id','desc')->get();
-    return $user;
+//     $user = User::find($id)->roles()->orderBy('id','desc')->get();
+//     return $user;
+
+// });
+
+//Accessing the pivot table
+Route::get('/users/pivot',function(){
+    
+    $user = User::find(1);
+    foreach ($user->roles as $role){
+        echo $role->pivot->created_at;
+    }
 
 });
-
 
 
 
