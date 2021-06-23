@@ -1,0 +1,15 @@
+php artisan make:controller --resource PostsController
+php artisan route:list
+
+php artisan migrate
+php artisan make:migration create_posts_table --create="posts"
+php artisan migrate:rollback //deletes last migration
+php artisan migrate:reset // deletes all tables
+php artisan migrate:refresh // deletes all tables and migrates
+php artisan make:migration add_is_admin_column_to_post_tables --table="posts"
+
+
+php artisan make:model Post -m //-m for migrations
+php artisan make:migration add_deleted_at_column_to_posts_tables --table=posts
+
+pivot table //abcd ascending order
